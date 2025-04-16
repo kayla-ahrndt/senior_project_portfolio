@@ -108,7 +108,7 @@ The dataset consists of detailed logistics and transactional records of internat
 
 ## Conclusion & Next Steps
 
-This project revealed critical insights into cost drivers, shipment reliability, and procurement trends. The modeling pipeline offers a blueprint for proactive supply chain management and decision-making.
+This project has revealed insights into cost drivers, shipment reliability, and procurement trends. The modeling pipeline offers the potential for a blueprint of  proactive supply chain management and decision-making.
 
 ### Future Work:
 - Integrate real-time logistics feeds and external factors 
