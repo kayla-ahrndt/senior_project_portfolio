@@ -1,6 +1,7 @@
 # Forecasting Supply Chain Disruptions and Reducing Costs Through Data Science
 **Senior Data Science Capstone, Belmont University**  
 **Kayla Ahrndt**
+
 This author is a senior Data Science major at Belmont University, completing this project as a graduation requirement for the program. 
 The author's intention of this project was to learn something completely new and out of their comfort zone, to learn how to apply what they've learned in a completely unseen and unknown context. 
 The author can be reached through the following email: kayla.ahrndt@gmail.com
