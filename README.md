@@ -99,6 +99,11 @@ We tend to see trends clustering per feature relationship, which shows us a lot 
 
 We see how few 'air charter' values there are and begin to better see the groupings between 'air' and 'ocean' shipment methods, where there is a vast greater number of 'air' that also tend to have a much greater spread than the more clustered 'ocean' values.
 
+- Did Principal Component Analysis for shipment features colored by the categorical frequency that shipments are delivered to a country ('high volume', 'medium volume', 'low volume')
+
+![PCA Shipment Features and Country Frequency](images/pca_shipmentfeatures_countrygroups.png)
+
+
 ### 2. What are the most important features that influence lead time? (Gradient Boosting Regression)
 
 Attempt 1:
