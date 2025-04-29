@@ -20,6 +20,14 @@ The author can be reached through the following email: kayla.ahrndt@gmail.com
 - [Methodology](#methodology)
 - [Conclusion & Next Steps](#conclusion--next-steps)
 
+## Advanced Topics
+- Gradient Boosting, 1 point (x2)
+- Gaussian Processes Regression, 2 points (x2)
+- K-Nearest Neighbors, 1 point (x1)
+- Interactive Visualization, 0.5 point (x7)
+- Feature Engineering, 0.5 point (x1)
+- Cross Validation, 0.5 point (x1)
+
 ---
 
 ## Overview
