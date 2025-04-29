@@ -75,7 +75,7 @@ The dataset consists of detailed logistics and transactional records of internat
 
 ## Methodology
 
-### 1. Data Exploration & Cleaning
+### Data Exploration & Cleaning
 - Learned supply chain vocabulary, structure, relationships, and about the specific features in this dataset
 - Cleaned self-referential values and values that were simultaneously noisy & unnecessary
 - Standardized, enforced datetime format, created 'lead_time' column, added time-based features ('year', 'month', 'quarter')
@@ -104,7 +104,7 @@ We see how few 'air charter' values there are and begin to better see the groupi
 ![PCA Shipment Features and Country Frequency](images/pca_shipmentfeatures_countrygroups.png)
 
 
-### 2. What are the most important features that influence lead time? (Gradient Boosting Regression)
+### What are the most important features that influence lead time? (Gradient Boosting Regression)
 
 Attempt 1:
 - Harnessed feature engineering and preprocessing
@@ -128,7 +128,7 @@ Attempt 2:
 
 Using Grid Search CV vastly improved the performance of my model, where my MAE, MSE, and RMSE are all incredibly close to 0 and my R^2 value shot up to 0.78, which is about (and perhaps a little better than) industry standard!
 
-### 3. How do ARV and HIV lab commodity prices vary across countries and over time? (Time Series)
+### How do ARV and HIV lab commodity prices vary across countries and over time? (Time Series)
 
 - For seasonality and external regressors - Detected seasonal pricing patterns external regressors (likely linked to geopolitics and/or shipping conditions)
 
@@ -146,37 +146,52 @@ Attempt 2:
 
 ![Time Series Second Attempt](images/hivarv_timeseries_attempt2.png)
 
-This visualization better shows (rising/lowering) trend over time, but does not account for future potential values. We can see more clearly here that prices drop in Q1 every year), but also doesn't handle external factors such as inflation or policy changes.
+This visualization better shows (rising/lowering) trend over time, but does not account for future potential values. We can see more clearly here that, for instance prices drop in Q1 every year, but also doesn't handle external factors such as inflation or policy changes.
 
-### 2. Supply Chain Efficiency (Gradient Boosting)
+### How can we optimize the supply chain expenses to reduce overall costs while maintaining efficient delivery? (Optimization Algorithm)
 
-- Modeled `lead_time` and `on-time delivery` as target variables
-- Trained Gradient Boosting models to identify key drivers of shipment delays
-- Ranked vendors and shipment modes based on predicted efficiency
+Attempt 1:
+- Created cost vector as freight cost per shipment
+- Created both maximum/minimum constraints ('weight (kilometers)', 'lead_time') and bounds for decision variables (each shipment is 0 (not selected) to 1 (selected fractionally))
+- Solved using linear programming
 
-### 3. Demand Forecasting (Support Vector Machine)
+![Optimization Algorithm First Attempt](images/hivarv_optimizationalgorithm_attempt1.png)
 
-- Forecasted `line item quantity` based on time, region, and product descriptors
-- Used Support Vector Regression (SVR) to model non-linear demand trends
-- Evaluated demand volatility for strategic planning
+Attempt 2:
+- Same as Attempt 1, but combined restraints
 
-### 4. Cost Optimization (Optimization Algorithms)
+![Optimization Algorithm Second Attempt](images/hivarv_optimizationalgorithm_attempt2.png)
 
-- Built a linear programming model to minimize total `freight cost` + `insurance`
-- Constraints included delivery deadlines, vendor availability, and mode of shipment
-- Performed sensitivity analysis to identify cost bottlenecks
+### Can we identify unusual patterns or outliers in pricing or shipment data that may indicate issues in the supply chain? (Gaussian Process Regression, K-Nearest Neighbors)
 
-### 5. Anomaly Detection (K-Nearest Neighbors)
+Gaussian Process Attempt 1:
+- Preprocessed and defined Gaussian Process with RBF kernel
+- Fit and predict on test data specifically with standard deviation: The optimal value found for dimension 0 of parameter k2__length_scale was close to the specified lower bound 0.01.
+- Computed residuals
 
-- Used KNN to flag abnormal values in `unit price`, `lead_time`, and `freight cost`
-- Applied unsupervised distance-based detection to spot vendor or mode inconsistencies
-- Enabled early warning for price gouging or logistical failures
+![Gaussian Process First Attempt Outliers](images/hivarv_gaussianprocess_topoutliers.png)
+![Gaussian Process First Attempt](images/hivarv_gaussianprocess_attempt1.png)
+Extremely low standard deviations = overconfidence. Some predictions have repeated uncertainly values/standard deviations. Unrealistically large z-scores.
 
-### 6. Disruption Modeling (Random Forest)
+Gaussian Process Attempt 2:
+- Same as attempt 1, but decreased the bound and called fit again to find a better value
+- Identified outliers: where |z| > threshold
 
-- Modeled the probability of shipment delay or failure using Random Forests
-- Input features: region, vendor, mode, and time-based indicators
-- Identified most disruption-prone routes and vendors
+![Gaussian Process Second Attempt Outliers](images/hivarv_gaussianprocess_topoutliers_attempt2.png)
+![Gaussian Process Second Attempt](images/hivarv_gaussianprocess_attempt2.png)
+Identical predictions and standard deviations = overfitting. Standard deviations too small / similar. When different rows yield the same output, the model is likely not differentiating features well, which could stem from over-simplified encoding, feature collinearity, pipeline errors, or an inappropriate kernel setup that “flattens” the response surface. Z-score thresholds "catching" everything.
+
+K-Nearest Neighbors
+- Calculated distances to the classic 5 neighbors
+- Set threshold for 95th percentile of distances
+
+![KNN Outliers](images/hivarv_knn_topoutliers.png)
+![KNN Patterns & Outliers Visualization](images/hivarv_knn_visualization.png)
+
+Pricing, weight, or lead time irregularities that deviate from the typical supply chain pattern. Each deviation is a shipment identifiable by ID (2-4 digit number on left).
+35: Extreme deviation from local neighborhood, likely due to very low freight cost (0.44 USD) for a normal weight. Perhaps a data entry error or an underpriced shipment.
+3004, 126, 3286: Moderate deviation from local neighborhood, ikely low weight or atypical combinations of weight, freight, and lead time. 
+653, 737, 5057, 689, 547, 4923: Likley represent uncommon but valid shipments, or inconsistencies that deserve attention (eg, relatively high freight for low weights).
 
 ---
 
