@@ -79,10 +79,22 @@ The dataset consists of detailed logistics and transactional records of internat
 - Learned supply chain vocabulary, structure, relationships, and about the specific features in this dataset
 - Cleaned self-referential values and values that were simultaneously noisy & unnecessary
 - Standardized, enforced datetime format, created 'lead_time' column, added time-based features ('year', 'month', 'quarter')
-- Created choropleths for 'Total Shipment Freight Cost (USD) by Country' and 'Total Shipment Freight Weight (Kilograms) by Country'
+- Created choropleths for 'Total Shipment Freight Weight (Kilograms) by Country' and 'Total Shipment Freight Cost (USD) by Country'
 
 ![Freight Cost Choropleth](images/hivarv_cost_choropleth.png)
 ![Freight Weight Choropleth](images/hivarv_weight_choropleth.png)
+It makes sense for these graphs to look the same at first glance, as intuitively, more money spent on a country likely means that they receive a greater amount of product which likely totals to a greater weight sent to a country.
+
+- Created a pairwise graph to examine the relationships between 'lead_time', 'weight (kilograms)', and 'freight cost (usd)'
+
+![Pairwise Feature Relationships](images/hivarv_pairwise_featurerelationships.png)
+We tend to see trends clustering per feature relationship, which shows us a lot of consistency (and potentially correlation) in the feature's relationships with one another.
+
+- Created an interactive 3D scatterplot to visualize the relationships between'lead_time', 'weight (kilograms)', and 'freight cost (usd)', colored by 'shipment mode'
+- 
+![3D Scatterplot Angle 1](images/3dscatter_costweightleadtime_angle1.png)
+![3D Scatterplot Angle 2](images/3dscatter_costweightleadtime_angle2.png)
+We see how few 'air charter' values there are and begin to better see the groupings between 'air' and 'ocean' shipment methods, where there is a vast greater number of 'air' that also tend to have a much greater spread than the more clustered 'ocean' values.
 
 ### 1. Price Analysis & Forecasting (Time Series)
 
