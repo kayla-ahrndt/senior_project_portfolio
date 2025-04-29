@@ -4,7 +4,7 @@
 
 This author is a senior Data Science major at Belmont University, completing this project as a graduation requirement for the program. 
 
-The author's intention of this project was to learn something completely new and out of their comfort zone, to learn how to apply what they've learned in a completely unseen and unknown context. 
+The author's intention of this project was to learn something completely new and out of their comfort zone, to learn how to apply what they've learned in a completely unseen and unknown context, and to learn new modeling techniques. 
 
 The author can be reached through the following email: kayla.ahrndt@gmail.com
 
@@ -74,6 +74,15 @@ The dataset consists of detailed logistics and transactional records of internat
 ---
 
 ## Methodology
+
+### 1. Data Exploration & Cleaning
+- Learned supply chain vocabulary, structure, relationships, and about the specific features in this dataset
+- Cleaned self-referential values and values that were simultaneously noisy & unnecessary
+- Standardized, enforced datetime format, created 'lead_time' column, added time-based features ('year', 'month', 'quarter')
+- Created choropleths for 'Total Shipment Freight Cost (USD) by Country' and 'Total Shipment Freight Weight (Kilograms) by Country'
+
+![hivarv_cost_choropleth](image/hivarv_cost_choropleth.png)
+![hivarv_cost_choropleth](image/hivarv_weight_choropleth.png)
 
 ### 1. Price Analysis & Forecasting (Time Series)
 
