@@ -81,8 +81,8 @@ The dataset consists of detailed logistics and transactional records of internat
 - Standardized, enforced datetime format, created 'lead_time' column, added time-based features ('year', 'month', 'quarter')
 - Created choropleths for 'Total Shipment Freight Cost (USD) by Country' and 'Total Shipment Freight Weight (Kilograms) by Country'
 
-![hivarv cost choropleth](image/hivarv_cost_choropleth.png)
-![hivarv cost choropleth](image/hivarv_weight_choropleth.png)
+![Freight Cost Choropleth](images/hivarv_cost_choropleth.png)
+![Freight Weight Choropleth](images/hivarv_weight_choropleth.png)
 
 ### 1. Price Analysis & Forecasting (Time Series)
 
