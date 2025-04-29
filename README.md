@@ -91,12 +91,34 @@ It makes sense for these graphs to look the same at first glance, as intuitively
 We tend to see trends clustering per feature relationship, which shows us a lot of consistency (and potentially correlation) in the feature's relationships with one another.
 
 - Created an interactive 3D scatterplot to visualize the relationships between'lead_time', 'weight (kilograms)', and 'freight cost (usd)', colored by 'shipment mode'
-- 
+
 ![3D Scatterplot Angle 1](images/3dscatter_costweightleadtime_angle1.png)
 ![3D Scatterplot Angle 2](images/3dscatter_costweightleadtime_angle2.png)
 We see how few 'air charter' values there are and begin to better see the groupings between 'air' and 'ocean' shipment methods, where there is a vast greater number of 'air' that also tend to have a much greater spread than the more clustered 'ocean' values.
 
-### 1. Price Analysis & Forecasting (Time Series)
+### 2. What are the most important features that influence lead time? (Gradient Boosting Regression)
+
+Attempt 1:
+- Harnessed feature engineering and preprocessing
+- Used Gradient Boosting, Random Forest, and SVR regressors
+- Cross-validated
+- Performed hyperparameter tuning
+- Used One-Hot-Encoding
+
+![Gradient Boosting Attempt 1 Visualization](hivarv_gradientboosting_attempt1_visualization.png)
+![Gradient Boosting Attempt 1 Performance](hivarv_gradientboosting_attempt1.png)
+Where some of the evaluation metrics such as MAE and RMSE are considered good (close to 0), the R^2 value shows us that the model isn't doing a good job at accounting for varience (far from 1). 
+This isn't a particularly reliable model, so I tried again!
+
+![Gradient Boosting Attempt 2 Grid Search CV](hivarv_gradientboosting_attempt2.png)
+![Gradient Boosting Attempt 2 Visualization](hivarv_gradientboosting_attempt2_visualization.png)
+![Gradient Boosting Attempt 2 Performance](hivarv_gradientboosting_attempt2.png)
+Using Grid Search CV vastly improved the performance of my model, where my MAE, MSE, and RMSE are all incredibly close to 0 and my R^2 value shot up to 0.78, which is about (and perhaps a little better than) industry standard!
+
+Attempt 2:
+- Grid Search CV
+
+### 2. Price Analysis & Forecasting (Time Series)
 
 - Visualized trends in `unit price` and `pack price` over time by product and region
 - Applied ARIMA and Exponential Smoothing to forecast future price trajectories
