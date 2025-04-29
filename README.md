@@ -105,17 +105,17 @@ Attempt 1:
 - Performed hyperparameter tuning
 - Used One-Hot-Encoding
 
-![Gradient Boosting First Attempt Visualization](hivarv_gradientboosting_attempt1_visualization.png)
-![Gradient Boosting First Attempt Performance](hivarv_gradientboosting_attempt1.png)
+![Gradient Boosting First Attempt Visualization](images/hivarv_gradientboosting_attempt1_visualization.png)
+![Gradient Boosting First Attempt Performance](images/hivarv_gradientboosting_attempt1.png)
 Where some of the evaluation metrics such as MAE and RMSE are considered good (close to 0), the R^2 value shows us that the model isn't doing a good job at accounting for varience (far from 1). 
 This isn't a particularly reliable model, so I tried again!
 
 Attempt 2:
 - Grid Search CV
 
-![Gradient Boosting Second Attempt Grid Search CV](hivarv_gradientboosting_attempt2.png)
-![Gradient Boosting Second Attempt Visualization](hivarv_gradientboosting_attempt2_visualization.png)
-![Gradient Boosting Second Attempt Performance](hivarv_gradientboosting_attempt2.png)
+![Gradient Boosting Second Attempt Grid Search CV](images/hivarv_gradientboosting_gridsearchcv_attempt2.png)
+![Gradient Boosting Second Attempt Visualization](images/hivarv_gradientboosting_attempt2_visualization.png)
+![Gradient Boosting Second Attempt Performance](images/hivarv_gradientboosting_attempt2.png)
 Using Grid Search CV vastly improved the performance of my model, where my MAE, MSE, and RMSE are all incredibly close to 0 and my R^2 value shot up to 0.78, which is about (and perhaps a little better than) industry standard!
 
 ### 2. Price Analysis & Forecasting (Time Series)
