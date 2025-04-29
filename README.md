@@ -18,12 +18,6 @@ The author can be reached through the following email: kayla.ahrndt@gmail.com
 - [Objectives](#objectives)
 - [Feature Dictionary](#feature-dictionary)
 - [Methodology](#methodology)
-  - [1. Price Analysis & Forecasting (Time Series)](#1-price-analysis--forecasting-time-series)
-  - [2. Supply Chain Efficiency (Gradient Boosting)](#2-supply-chain-efficiency-gradient-boosting)
-  - [3. Demand Forecasting (Support Vector Machine)](#3-demand-forecasting-support-vector-machine)
-  - [4. Cost Optimization (Optimization Algorithms)](#4-cost-optimization-optimization-algorithms)
-  - [5. Anomaly Detection (K-Nearest Neighbors)](#5-anomaly-detection-k-nearest-neighbors)
-  - [6. Disruption Modeling (Random Forest)](#6-disruption-modeling-random-forest)
 - [Conclusion & Next Steps](#conclusion--next-steps)
 
 ---
