@@ -83,17 +83,20 @@ The dataset consists of detailed logistics and transactional records of internat
 
 ![Freight Cost Choropleth](images/hivarv_cost_choropleth.png)
 ![Freight Weight Choropleth](images/hivarv_weight_choropleth.png)
+
 It makes sense for these graphs to look the same at first glance, as intuitively, more money spent on a country likely means that they receive a greater amount of product which likely totals to a greater weight sent to a country.
 
 - Created a pairwise graph to examine the relationships between 'lead_time', 'weight (kilograms)', and 'freight cost (usd)'
 
 ![Pairwise Feature Relationships](images/hivarv_pairwise_featurerelationships.png)
+
 We tend to see trends clustering per feature relationship, which shows us a lot of consistency (and potentially correlation) in the feature's relationships with one another.
 
 - Created an interactive 3D scatterplot to visualize the relationships between'lead_time', 'weight (kilograms)', and 'freight cost (usd)', colored by 'shipment mode'
 
 ![3D Scatterplot Angle 1](images/3dscatter_costweightleadtime_angle1.png)
 ![3D Scatterplot Angle 2](images/3dscatter_costweightleadtime_angle2.png)
+
 We see how few 'air charter' values there are and begin to better see the groupings between 'air' and 'ocean' shipment methods, where there is a vast greater number of 'air' that also tend to have a much greater spread than the more clustered 'ocean' values.
 
 ### 2. What are the most important features that influence lead time? (Gradient Boosting Regression)
@@ -107,6 +110,7 @@ Attempt 1:
 
 ![Gradient Boosting First Attempt Visualization](images/hivarv_gradientboosting_attempt1_visualization.png)
 ![Gradient Boosting First Attempt Performance](images/hivarv_gradientboosting_attempt1.png)
+
 Where some of the evaluation metrics such as MAE and RMSE are considered good (close to 0), the R^2 value shows us that the model isn't doing a good job at accounting for varience (far from 1). 
 This isn't a particularly reliable model, so I tried again!
 
@@ -116,6 +120,7 @@ Attempt 2:
 ![Gradient Boosting Second Attempt Grid Search CV](images/hivarv_gradientboosting_gridsearchcv_attempt2.png)
 ![Gradient Boosting Second Attempt Visualization](images/hivarv_gradientboosting_attempt2_visualization.png)
 ![Gradient Boosting Second Attempt Performance](images/hivarv_gradientboosting_attempt2.png)
+
 Using Grid Search CV vastly improved the performance of my model, where my MAE, MSE, and RMSE are all incredibly close to 0 and my R^2 value shot up to 0.78, which is about (and perhaps a little better than) industry standard!
 
 ### 2. Price Analysis & Forecasting (Time Series)
