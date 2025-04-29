@@ -128,11 +128,25 @@ Attempt 2:
 
 Using Grid Search CV vastly improved the performance of my model, where my MAE, MSE, and RMSE are all incredibly close to 0 and my R^2 value shot up to 0.78, which is about (and perhaps a little better than) industry standard!
 
-### 2. Price Analysis & Forecasting (Time Series)
+### 3. How do ARV and HIV lab commodity prices vary across countries and over time? (Time Series)
 
-- Visualized trends in `unit price` and `pack price` over time by product and region
+- For seasonality and external regressors - Detected seasonal pricing patterns external regressors (likely linked to geopolitics and/or shipping conditions)
+
+Attempt 1:
 - Applied ARIMA and Exponential Smoothing to forecast future price trajectories
-- Detected seasonal pricing patterns linked to delivery cycles or vendor behavior
+
+![Time Series First Attempt](images/hivarv_timeseries_shipmentpricingbycountry.png)
+
+ARIMA accounts for past trends; so if prices were increasing before, it projects a continued increase. This doesn't handle external factors such as inflation or policy changes.
+
+Attempt 2:
+- Melted the pivoted DataFrame for long-format compatibility
+- Visualized trends in unit price over time by country
+- Visualized cleaner and easier to read
+
+![Time Series Second Attempt](images/hivarv_timeseries_attempt2.png)
+
+This visualization better shows (rising/lowering) trend over time, but does not account for future potential values. We can see more clearly here that prices drop in Q1 every year), but also doesn't handle external factors such as inflation or policy changes.
 
 ### 2. Supply Chain Efficiency (Gradient Boosting)
 
